@@ -1,0 +1,61 @@
+<div id="form-container">
+
+  <dx-pie-chart
+    id="pie"
+    title="Clasificación Tamizaje"
+    palette="bright"
+    [dataSource]="clasificados">
+    <dxo-legend
+        horizontalAlignment="center"
+        verticalAlignment="bottom"></dxo-legend>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxi-series
+        argumentField="strNombre"
+        valueField="strCantidad">
+        <dxo-label
+            [visible]="true"
+            [customizeText]="customizeLabel">
+            <dxo-connector
+                [visible]="true"
+                [width]="0.5"></dxo-connector>
+        </dxo-label>
+    </dxi-series>
+</dx-pie-chart>
+
+  <dx-data-grid id="gridContainer"
+              [dataSource]="coleccionPersonas"
+              [showBorders]="true"
+              [showRowLines]="true"
+              keyExpr="strNumeroDocumento"
+              [hoverStateEnabled]="true"
+              [allowColumnReordering]="true"
+              [rowAlternationEnabled]="true">
+
+    <dxo-paging [enabled]="true"></dxo-paging>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-sorting mode="multiple"></dxo-sorting>
+    <dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-search-panel [visible]="true" [width]="240" placeholder="Buscar..."></dxo-search-panel>
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-state-storing [enabled]="true" type="localStorage" storageKey="storage"></dxo-state-storing>
+    <dxo-pager
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 20, 50, 100]"
+        [showInfo]="true">
+    </dxo-pager>
+
+    <dxi-column dataField="strNumeroDocumento" caption="Documento Persona"></dxi-column>
+    <dxi-column dataField="decTemperatura" caption="Temperatura"></dxi-column>
+    <dxi-column dataField="dtFechaCreacion" dataType="date" caption="Fecha Creacion"></dxi-column>
+
+    <dxo-summary>
+      <dxi-group-item
+          column="strNumeroDocumento"
+          summaryType="count"
+          displayFormat="{0} Muestra(s)">
+      </dxi-group-item>
+  </dxo-summary>
+  </dx-data-grid>
+</div>

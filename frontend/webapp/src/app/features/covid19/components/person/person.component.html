@@ -1,0 +1,25 @@
+<div id="form-container">
+  <dx-form id="form"
+           [colCount]="1"
+           [formData]="nuevaPersona">
+
+    <dxi-item dataField="strNumeroDocumento" [editorOptions]="{ disabled: false }">
+      <dxo-label
+        text="Cedula">
+      </dxo-label>
+    </dxi-item>
+    <dxi-item dataField="decTemperatura" [editorOptions]="{ disabled: false }">
+      <dxo-label
+        text="Temperatura">
+      </dxo-label>
+    </dxi-item>
+
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="right"
+      verticalAlignment="center"
+      [buttonOptions]="buttonOptions"
+      colSpan="2">
+    </dxi-item>
+  </dx-form>
+</div>
